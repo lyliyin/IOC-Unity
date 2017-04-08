@@ -18,7 +18,6 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            _Container.AddNewExtension<Interception>().Configure<Interception>().SetInterceptorFor<IBaseService>(new InterfaceInterceptor());
             Category category = new Category()
             {
                 CategoryLevel = 1,
@@ -32,23 +31,20 @@ namespace ConsoleTest
             IBaseService Service = Container.GetInstances().Resolve<IBaseService>();
 
             Service = Container.GetInstances().Resolve<IBaseService>();
-            //context.Set<Category>().Add(category);
-            //context.SaveChanges();
-
+          
             Service.Insert(category);
 
-            //Func<Category, bool> fun = IsTrue(category);
 
-            //Expression<Func<Category, bool>> express = t => t.Id > 1 && t.State > 0;
+            Expression<Func<Category, bool>> express = t => t.Id > 1 && t.State > 0;
 
-            //Category entity = Service.GetInfo<Category>(express);
+            Category entity = Service.GetInfo<Category>(express);
 
             Console.ReadLine();
 
         }
 
 
-        //一般放在Golbal 里面  接口实现就可以放在 App.Config
+        //一般放在Golbal 里面
         public class Container
         {
             private static Container _Instances = null;
