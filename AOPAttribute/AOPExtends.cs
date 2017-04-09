@@ -60,6 +60,7 @@ namespace AOPAttribute
     /// <summary>
     /// 日志特性
     /// </summary>
+    [AttributeUsage(AttributeTargets.Interface,Inherited=true)] //表示只能在接口上面增加特性
     public class LogHandlerAttribute : HandlerAttribute
     {
         public override ICallHandler CreateHandler(IUnityContainer container)
